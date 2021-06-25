@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/model/Welcome.dart';
-import 'package:newsapp/other/StringConstant.dart';
+import 'package:newsapp/util/MockData.dart';
+import 'package:page_view_indicator/page_view_indicator.dart';
+
 
 class OnBoarding extends StatefulWidget {
   @override
@@ -16,14 +19,12 @@ class _OnBoardingState extends State<OnBoarding> {
     onPrimary: Colors.red.shade800,
   );
 
-  List<Welcome> welcome = [
-    Welcome(
-        description:
-            "Making friends is easy as waving your hand and forth in easy step",
-        image: image1),
-    Welcome(description: "description 2", image: image2),
-    Welcome(description: "description 3", image: image3),
-  ];
+  // todo call instance data from singleton
+  List<Welcome> welcome = MockData.mockData.getOnBoarding();
+
+  int _currentIndex = 0;
+
+  ValueNotifier<int> _pageViewNotifier = ValueNotifier(0);
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +79,7 @@ class _OnBoardingState extends State<OnBoarding> {
                             welcome[index].description,
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.grey,
+                              color: Colors.white70,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -90,22 +91,29 @@ class _OnBoardingState extends State<OnBoarding> {
               );
             },
             itemCount: 3,
+            onPageChanged: (index){
+              _pageViewNotifier.value = index;
+            },
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Transform.translate(
+            offset: Offset(0, 165),
+            child: _displayPageIndicators(welcome.length),
           ),
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 24),
+            padding: EdgeInsets.only(bottom: 24),
             child: ElevatedButton(
               style: style,
               onPressed: () {
-                print("buttom clicked");
-              },
-              onLongPress: () {
-                print("buttom onLongPress clicked");
+                print("button clicked");
               },
               child: Text(
-                'Enabled',
+                'Get Started',
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -114,4 +122,26 @@ class _OnBoardingState extends State<OnBoarding> {
       ],
     );
   }
+
+  Widget _displayPageIndicators(int length ){
+    return PageViewIndicator(
+      pageIndexNotifier: _pageViewNotifier,
+      length: length,
+      normalBuilder: (animationController, index) => Circle(
+        size: 8.0,
+        color: Colors.grey,
+      ),
+      highlightedBuilder: (animationController, index) => ScaleTransition(
+        scale: CurvedAnimation(
+          parent: animationController,
+          curve: Curves.ease,
+        ),
+        child: Circle(
+          size: 12.0,
+          color: Colors.red,
+        ),
+      ),
+    );
+  }
+
 }
