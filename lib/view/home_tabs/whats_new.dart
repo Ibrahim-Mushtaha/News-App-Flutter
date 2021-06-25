@@ -86,6 +86,14 @@ class _WhatsNewState extends State<WhatsNew> {
               _drawSingleStoriesItem(),
               _drawSingleStoriesItem(),
               _drawSingleStoriesItem(),
+              Padding(
+                padding: EdgeInsets.only(left: 16,top: 24,bottom: 4),
+                child: Text("Recent Updates",
+                  textAlign: TextAlign.left,
+                  style: _titleStyle,
+                ),
+              ),
+              _drawSingleRecentUpdateItem(),
             ],
           ),
         );
@@ -144,6 +152,41 @@ class _WhatsNewState extends State<WhatsNew> {
                                   ),
                                 ),
                               ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+  }
+
+  Padding _drawSingleRecentUpdateItem() {
+    return Padding(
+                padding: EdgeInsets.only(left: 8,right: 8,top: 2),
+              child: Card(
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Column(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: double.infinity,
+                            height: 200,
+                            child: Image(image: ExactAssetImage(image1),fit: BoxFit.cover,),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              padding: EdgeInsets.all(8),
+                              color: Colors.deepOrangeAccent,
+                              child: Text("item 1"),
                             ),
                           ),
                         ],
