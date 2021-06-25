@@ -94,6 +94,9 @@ class _WhatsNewState extends State<WhatsNew> {
                 ),
               ),
               _drawSingleRecentUpdateItem(),
+              _drawSingleRecentUpdateItem(),
+              _drawSingleRecentUpdateItem(),
+              _drawSingleRecentUpdateItem(),
             ],
           ),
         );
@@ -184,9 +187,42 @@ class _WhatsNewState extends State<WhatsNew> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
+                              width: 94,
                               padding: EdgeInsets.all(8),
-                              color: Colors.deepOrangeAccent,
-                              child: Text("item 1"),
+                              decoration: BoxDecoration(
+                                color: Colors.deepOrangeAccent,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Center(
+                                child: Text("item 1",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w300
+                                ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8,bottom: 8,left: 12,top: 8),
+                            child: Text("Lorem Ipsum is simply dummy text of.",maxLines: 2,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8,bottom: 8,left: 8,top: 2),
+                            child: Row(
+                              children: [
+                                Container(child: Icon(Icons.timer),margin: EdgeInsets.only(right: 4),),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6),
+                                  child: Text("16 min",textAlign: TextAlign.center,),
+                                ),
+                              ],
                             ),
                           ),
                         ],
