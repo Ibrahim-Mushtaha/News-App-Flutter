@@ -12,7 +12,7 @@ class _PopularState extends State<Popular> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      color: Colors.grey.shade100,
     );
   }
 }
