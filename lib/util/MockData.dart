@@ -5,6 +5,7 @@ import 'package:newsapp/other/StringConstant.dart';
 class MockData{
   MockData._();
   static final MockData mockData = MockData._();
+
   List<Welcome> getOnBoarding(){
     return <Welcome>[
       Welcome(

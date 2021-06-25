@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/model/Welcome.dart';
 import 'package:newsapp/util/MockData.dart';
+import 'package:newsapp/view/home.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoarding extends StatefulWidget {
   @override
@@ -110,6 +111,11 @@ class _OnBoardingState extends State<OnBoarding> {
             child: ElevatedButton(
               style: style,
               onPressed: () {
+                _updateSeen();
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  //todo update seen
+                  return HomeScreen();
+                } ));
                 print("button clicked");
               },
               child: Text(
@@ -142,6 +148,12 @@ class _OnBoardingState extends State<OnBoarding> {
         ),
       ),
     );
+  }
+
+
+  void _updateSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('seen', true);
   }
 
 }
