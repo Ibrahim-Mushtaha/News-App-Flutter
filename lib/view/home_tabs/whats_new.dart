@@ -103,7 +103,7 @@ class _WhatsNewState extends State<WhatsNew> {
   }
 
   //todo create card with image and title & etc...
-  Padding _drawSingleStoriesItem() {
+  Widget _drawSingleStoriesItem() {
     return Padding(
                 padding: EdgeInsets.only(left: 8,right: 8,top: 2),
               child: Card(
@@ -166,7 +166,7 @@ class _WhatsNewState extends State<WhatsNew> {
             );
   }
 
-  Padding _drawSingleRecentUpdateItem() {
+  Widget _drawSingleRecentUpdateItem() {
     return Padding(
                 padding: EdgeInsets.only(left: 8,right: 8,top: 2),
               child: Card(
