@@ -13,11 +13,11 @@ class OnBoarding extends StatefulWidget {
 
 class _OnBoardingState extends State<OnBoarding> {
   //todo button style
-  final ButtonStyle style = ElevatedButton.styleFrom(
-    textStyle: TextStyle(fontSize: 16),
-    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-    minimumSize: Size(360, 56),
-    onPrimary: Colors.red.shade800,
+  final ButtonStyle _style = ButtonStyle(
+    minimumSize: MaterialStateProperty.all(Size(360, 56),),
+    padding: MaterialStateProperty.all(EdgeInsets.all(12)),
+    textStyle: MaterialStateProperty.all(TextStyle(fontSize: 16)),
+    backgroundColor:  MaterialStateProperty.all(Colors.deepOrangeAccent),
   );
 
   // todo call instance data from singleton
@@ -75,7 +75,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       ),
                       Center(
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 16),
+                          padding: const EdgeInsets.only(top: 16,right: 24,left: 24),
                           child: Text(
                             welcome[index].description,
                             style: TextStyle(
@@ -109,7 +109,7 @@ class _OnBoardingState extends State<OnBoarding> {
           child: Padding(
             padding: EdgeInsets.only(bottom: 24),
             child: ElevatedButton(
-              style: style,
+              style: _style,
               onPressed: () {
                 _updateSeen();
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -144,7 +144,7 @@ class _OnBoardingState extends State<OnBoarding> {
         ),
         child: Circle(
           size: 12.0,
-          color: Colors.red,
+          color: Colors.deepOrangeAccent,
         ),
       ),
     );

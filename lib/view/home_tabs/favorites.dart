@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/other/StringConstant.dart';
 
@@ -33,6 +34,8 @@ class _FavoritesState extends State<Favorites> {
                 child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           margin: EdgeInsets.only(left: 4),
@@ -53,6 +56,8 @@ class _FavoritesState extends State<Favorites> {
                           ),
                         ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -80,19 +85,24 @@ class _FavoritesState extends State<Favorites> {
                               ),
                             ],
                           ),
-                          Transform.translate(
-                              child: SizedBox(
-                                child: IconButton(
-                                  icon: Icon(Icons.bookmark_border),
-                                  onPressed: (){
-                                    print("button clicked");
-                                  },
-                                ),
-                              ),
-                            offset: Offset(140,0),
-                          ),
                         ],
                       ),
+                        Transform.translate(
+                          offset: Offset(128,0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+
+                              IconButton(
+                                icon: Icon(Icons.bookmark_border),
+                                onPressed: (){
+                                  print("button clicked");
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                     Container(

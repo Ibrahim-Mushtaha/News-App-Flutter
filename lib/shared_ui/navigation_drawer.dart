@@ -11,6 +11,8 @@ class NavigationDrawer extends StatefulWidget {
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
 
+
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -41,7 +43,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 child: ListView.builder(
                     itemBuilder: (context , position){
                       return ListTile(
-                          title: Text(MockData.mockData.navMenu[position], style: TextStyle(
+                          title: Text(MockData.mockData.navMenu[position].title, style: TextStyle(
                             color: Colors.grey.shade600,
                             fontSize: 16,
                           ),
@@ -50,6 +52,11 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                           Icons.chevron_right, color: Colors.grey.shade400,
                         ),
                         onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return MockData.mockData.navMenu[position].distance();
+                            }
+                            )
+                            );
                           print(MockData.mockData.navMenu[position]);
                         },
                       );

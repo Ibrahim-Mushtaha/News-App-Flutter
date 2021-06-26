@@ -30,6 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   page_view_indicator: ^2.0.4
   shared_preferences: ^2.0.6
+  motion_toast: ^1.0.0
+  bottom_sheet: ^1.0.0
 
 dev_dependencies:
   flutter_test:
