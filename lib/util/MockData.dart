@@ -16,4 +16,13 @@ class MockData{
       Welcome(description: "description 3", image: image3),
     ];
   }
+
+  List<String> navMenu = [
+    EXPLORE,
+    HEAD_LINE,
+    READ_LATER,
+    SETTINGS,
+    LOGOUT,
+  ];
+
 }

@@ -81,9 +81,13 @@ class _FavoritesState extends State<Favorites> {
                             ],
                           ),
                           Transform.translate(
-                              child: Container(
-                                child: Icon(Icons.bookmark_border_outlined),
-                                margin: EdgeInsets.only(right: 4),
+                              child: SizedBox(
+                                child: IconButton(
+                                  icon: Icon(Icons.bookmark_border),
+                                  onPressed: (){
+                                    print("button clicked");
+                                  },
+                                ),
                               ),
                             offset: Offset(140,0),
                           ),

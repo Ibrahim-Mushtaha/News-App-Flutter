@@ -38,24 +38,26 @@ class _WhatsNewState extends State<WhatsNew> {
     return Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.25,
-          /*decoration: BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: ExactAssetImage(image3),
+              image: ExactAssetImage(image2),
               fit: BoxFit.cover
             ),
-          )*/
-          color: Colors.black45.withOpacity(0.5),
+          ),
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  child: Text("How Terriers & Royals Gatecrashed Final",style: _headerTitle,textAlign: TextAlign.center,),
-                  padding: EdgeInsets.only(left: 16,right: 16),
-                ),
-                SizedBox(height: 16,),
-                Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry.",style: _headerDescription,textAlign: TextAlign.center),
-              ],
+            child: Container(
+              color: Colors.black45.withOpacity(0.5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    child: Text("How Terriers & Royals Gatecrashed Final",style: _headerTitle,textAlign: TextAlign.center,),
+                    padding: EdgeInsets.only(left: 16,right: 16),
+                  ),
+                  SizedBox(height: 16,),
+                  Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry.",style: _headerDescription,textAlign: TextAlign.center),
+                ],
+              ),
             ),
           ),
         );
