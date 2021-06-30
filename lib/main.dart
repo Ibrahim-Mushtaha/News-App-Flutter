@@ -32,11 +32,8 @@ class NewsApp extends StatelessWidget {
       defaultBrightness: Brightness.light,
       builder: (context, _brightness) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          brightness: _brightness,
-          fontFamily: "Tajawal-Regular",
-        ),
+        //darkTheme: AppTheme.darkTheme,
+        theme: AppTheme.getTheme(),
         home: _screen,
       ),
     );
