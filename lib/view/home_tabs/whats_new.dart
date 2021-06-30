@@ -2,6 +2,8 @@ import 'package:bottom_sheet/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:newsapp/other/StringConstant.dart';
+import 'package:newsapp/shared_ui/recent_update_item.dart';
+import 'package:newsapp/shared_ui/top_stories_item.dart';
 
 class WhatsNew extends StatefulWidget {
   const WhatsNew({Key key}) : super(key: key);
@@ -82,9 +84,9 @@ class _WhatsNewState extends State<WhatsNew> {
               style: _titleStyle,
             ),
           ),
-          _drawSingleStoriesItem(),
-          _drawSingleStoriesItem(),
-          _drawSingleStoriesItem(),
+          TopStoriesItem("Lorem Ipsum is simply dummy text of."),
+          TopStoriesItem("Lorem Ipsum is simply dummy text of."),
+          TopStoriesItem("Lorem Ipsum is simply dummy text of."),
           Padding(
             padding: EdgeInsets.only(left: 16, top: 24, bottom: 4),
             child: Text(
@@ -93,194 +95,15 @@ class _WhatsNewState extends State<WhatsNew> {
               style: _titleStyle,
             ),
           ),
-          _drawSingleRecentUpdateItem(),
-          _drawSingleRecentUpdateItem(),
-          _drawSingleRecentUpdateItem(),
-          _drawSingleRecentUpdateItem(),
+          RecentUpdateItem("Lorem Ipsum is simply dummy text of."),
+          RecentUpdateItem("Lorem Ipsum is simply dummy text of."),
+          RecentUpdateItem("Lorem Ipsum is simply dummy text of."),
+          RecentUpdateItem("Lorem Ipsum is simply dummy text of."),
         ],
       ),
     );
   }
 
-  //todo create card with image and title & etc...
-  Widget _drawSingleStoriesItem() {
-    return InkWell(
-      onTap: () {
-        MotionToast.success(
-          title: "item Stories is clicked",
-          titleStyle:
-              TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-          description: "Example of success motion toast",
-          descriptionStyle: TextStyle(fontSize: 12, color: Colors.white),
-          width: 300,
-        ).show(context);
-        print("item Stories is clicked");
-      },
-      child: Padding(
-        padding: EdgeInsets.only(left: 8, right: 8, top: 2),
-        child: Card(
-          elevation: 4,
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 100,
-                      height: 100,
-                      child: Image(
-                        image: ExactAssetImage(image1),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 16,
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8, bottom: 8),
-                            child: Text(
-                              "Lorem Ipsum is simply dummy text of.",
-                              maxLines: 2,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.start,
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Lorem Ipsum",
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 16),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        child: Icon(Icons.timer),
-                                        margin: EdgeInsets.only(right: 4),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 6),
-                                        child: Text(
-                                          "16 min",
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  //todo create recent update item
-  Widget _drawSingleRecentUpdateItem() {
-    return InkWell(
-      onTap: () {
-        _showSheet();
-        print("item is clicked");
-      },
-      child: Padding(
-        padding: EdgeInsets.only(left: 8, right: 8, top: 2),
-        child: Card(
-          elevation: 4,
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: Column(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      height: 200,
-                      child: Image(
-                        image: ExactAssetImage(image1),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 94,
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.deepOrangeAccent,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "item 1",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w300),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          right: 8, bottom: 8, left: 12, top: 8),
-                      child: Text(
-                        "Lorem Ipsum is simply dummy text of.",
-                        maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          right: 8, bottom: 8, left: 8, top: 2),
-                      child: Row(
-                        children: [
-                          Container(
-                            child: Icon(Icons.timer),
-                            margin: EdgeInsets.only(right: 4),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 6),
-                            child: Text(
-                              "16 min",
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
   void _showSheet() {
     showFlexibleBottomSheet<void>(
