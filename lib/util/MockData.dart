@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:newsapp/model/NavMenuItems.dart';
 import 'package:newsapp/model/Welcome.dart';
 import 'package:newsapp/other/StringConstant.dart';
@@ -8,8 +9,10 @@ import 'package:newsapp/view/readlater.dart';
 import 'package:newsapp/view/setting.dart';
 
 class MockData{
+
   MockData._();
   static final MockData mockData = MockData._();
+  static final logger = Logger();
 
   List<Welcome> getOnBoarding(){
     return <Welcome>[

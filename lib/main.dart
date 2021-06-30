@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/util/StorageManager.dart';
+import 'package:newsapp/util/ThemeBuilder.dart';
 import 'package:newsapp/util/apptheme.dart';
 import 'package:newsapp/view/onboarding.dart';
 import 'package:newsapp/view/home.dart';
@@ -7,9 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool seen = prefs.getBool('seen');
+  await StorageManager.init();
+  bool seen = StorageManager.getBool('seen');
   Widget _screen;
   if(seen == null || seen == false){
     _screen = OnBoarding();
@@ -27,10 +28,17 @@ class NewsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.appTheme,
-      home: _screen,
+    return ThemeBuilder(
+      defaultBrightness: Brightness.light,
+      builder: (context, _brightness) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          brightness: _brightness,
+          fontFamily: "Tajawal-Regular",
+        ),
+        home: _screen,
+      ),
     );
   }
 }

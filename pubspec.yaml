@@ -32,6 +32,8 @@ dependencies:
   shared_preferences: ^2.0.6
   motion_toast: ^1.0.0
   bottom_sheet: ^1.0.0
+  adobe_xd: ^1.0.0+1
+  logger: ^1.0.0
 
 dev_dependencies:
   flutter_test:

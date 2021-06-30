@@ -40,15 +40,15 @@ class _WhatsNewState extends State<WhatsNew> {
           color: Colors.black45.withOpacity(0.5),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                child: Text(
-                  "How Terriers & Royals Gatecrashed Final",
-                  style: _headerTitle,
-                  textAlign: TextAlign.center,
-                ),
-                padding: EdgeInsets.only(left: 16, right: 16),
+            children: [Padding(
+              child: Text(
+                "How Terriers & Royals Gatecrashed Final",
+                style: _headerTitle,
+                textAlign: TextAlign.center,
               ),
+              padding: EdgeInsets.only(left: 16, right: 16),
+            )
+              ,
               SizedBox(
                 height: 16,
               ),
