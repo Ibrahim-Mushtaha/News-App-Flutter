@@ -12,3 +12,4 @@ const String POPULAR = "POPULAR";
 const String FAVORITE = "FAVORITES";
 const String TOPSTORIES = "Top Stories";
 const String THEME = "theme";
+const String SEEN = "seen";

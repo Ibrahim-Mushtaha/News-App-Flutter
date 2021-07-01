@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/splash.dart';
 import 'package:newsapp/util/StorageManager.dart';
 import 'package:newsapp/util/ThemeBuilder.dart';
 import 'package:newsapp/util/apptheme.dart';
@@ -10,21 +11,12 @@ main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await StorageManager.init();
-  bool seen = StorageManager.getBool('seen');
-  Widget _screen;
-  if(seen == null || seen == false){
-    _screen = OnBoarding();
-  }else{
-    _screen = HomeScreen();
-  }
 
-  runApp( NewsApp( _screen ) );
+  runApp( NewsApp() );
 }
 
 class NewsApp extends StatelessWidget {
 
-  final Widget _screen;
-  NewsApp(this._screen);
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +24,8 @@ class NewsApp extends StatelessWidget {
       defaultBrightness: Brightness.light,
       builder: (context, _brightness) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        //darkTheme: AppTheme.darkTheme,
         theme: AppTheme.getTheme(),
-        home: _screen,
+        home: Splash(),
       ),
     );
   }
