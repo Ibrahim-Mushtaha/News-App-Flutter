@@ -5,7 +5,9 @@ import 'package:newsapp/util/MockData.dart';
 
 class RecentUpdateItem extends StatelessWidget {
 
-  final String text;
+  final String title;
+  final String description;
+  final String time;
   final double fontSize;
   final TextAlign textAlign;
   final Color color;
@@ -14,7 +16,10 @@ class RecentUpdateItem extends StatelessWidget {
   final int maxLines;
   final String fontFamily;
 
-  RecentUpdateItem(this.text,
+  RecentUpdateItem(
+      this.title,
+      this.description,
+      this.time,
       {
         this.fontSize,
         this.textAlign,
@@ -63,7 +68,7 @@ class RecentUpdateItem extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            "item 1",
+                            title ?? 'استبدل هذا النص',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w300),
@@ -75,7 +80,7 @@ class RecentUpdateItem extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           right: 8, bottom: 8, left: 12, top: 8),
                       child: Text(
-                        "Lorem Ipsum is simply dummy text of.",
+                        description ?? 'استبدل هذا النص',
                         maxLines: 2,
                         style: TextStyle(
                           fontSize: 16,
@@ -96,7 +101,7 @@ class RecentUpdateItem extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 6),
                             child: Text(
-                              "16 min",
+                              time ?? 'استبدل هذا النص',
                               textAlign: TextAlign.center,
                             ),
                           ),

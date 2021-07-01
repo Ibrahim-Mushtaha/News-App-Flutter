@@ -11,3 +11,4 @@ const String WHATSNEW = "WHAT'S NEW";
 const String POPULAR = "POPULAR";
 const String FAVORITE = "FAVORITES";
 const String TOPSTORIES = "Top Stories";
+const String THEME = "theme";

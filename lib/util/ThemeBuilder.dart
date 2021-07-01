@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/util/StorageManager.dart';
 
 class ThemeBuilder extends StatefulWidget {
@@ -23,7 +24,7 @@ class _ThemeBuilderState extends State<ThemeBuilder> {
   void initState() {
     super.initState();
     // ignore: unrelated_type_equality_checks
-    if(StorageManager.getBool("theme") == true) {
+    if(StorageManager.getBool(THEME) == true) {
       _brightness = Brightness.light;
       print("theme light is true");
     } else {

@@ -32,9 +32,9 @@ class AppTheme {
   static ThemeData getTheme() {
     if (StorageManager.getBool("theme") != null &&
         StorageManager.getBool("theme") == true) {
-      return lightTheme;
-    } else {
       return darkTheme;
+    } else {
+      return lightTheme;
     }
   }
 
