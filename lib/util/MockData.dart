@@ -28,7 +28,7 @@ class MockData{
   List<NavMenuItems> navMenu = [
     NavMenuItems(EXPLORE, () => HomeScreen() ),
     NavMenuItems(HEAD_LINE, () => HeadLine() ),
-    NavMenuItems(READ_LATER, () => ReadLater() ),
+    //NavMenuItems(READ_LATER, () => ReadLater() ),
     NavMenuItems(SETTINGS, () => Setting() ),
     NavMenuItems(LOGOUT, () => OnBoarding() ),
   ];
