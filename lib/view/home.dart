@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/other/EnumConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/navigation_drawer.dart';
+import 'package:newsapp/util/MockData.dart';
 import 'package:newsapp/view/home_tabs/favorites.dart';
 import 'package:newsapp/view/home_tabs/popular.dart';
 import 'package:newsapp/view/home_tabs/whats_new.dart';
@@ -16,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
 
   TabController _tabController;
-
+  PopOutMenu _selection;
 
   @override
   void initState() {
@@ -32,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         centerTitle: false,
         actions: [
           IconButton(icon: Icon(Icons.search), onPressed: (){}),
-          IconButton(icon: Icon(Icons.more_vert), onPressed: (){}),
+          _popOutMenu(context),
         ],
         bottom: TabBar(
           isScrollable: false,
@@ -58,4 +60,30 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       ),
     );
   }
+
+
+  //todo create popupMenu
+  Widget _popOutMenu(BuildContext context) {
+    return PopupMenuButton<PopOutMenu>(itemBuilder: (context){
+      return [
+        PopupMenuItem(
+            value: PopOutMenu.ABOUT,
+            child: Text('About')
+        ),
+        PopupMenuItem(
+            value: PopOutMenu.HELP,
+            child: Text('Help')
+        ),
+      ];
+    }, onSelected: (PopOutMenu menu ){
+        setState(() {
+          _selection = menu;
+          MockData.logger.v("selection is $menu");
+        });
+    },
+    icon: Icon(Icons.more_vert),
+    );
+  }
+
+
 }
