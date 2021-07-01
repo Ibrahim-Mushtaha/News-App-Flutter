@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/model/Welcome.dart';
 import 'package:newsapp/util/MockData.dart';
-import 'package:newsapp/view/home.dart';
+import 'package:newsapp/view/home/home.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

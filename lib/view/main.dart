@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/splash.dart';
+import 'package:newsapp/view/splash/splash.dart';
 import 'package:newsapp/util/StorageManager.dart';
 import 'package:newsapp/util/ThemeBuilder.dart';
 import 'package:newsapp/util/apptheme.dart';
-import 'package:newsapp/view/onboarding.dart';
-import 'package:newsapp/view/home.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 main() async {
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/util/StorageManager.dart';
 import 'package:newsapp/value/animate_do.dart';
-import 'package:newsapp/view/home.dart';
-import 'package:newsapp/view/onboarding.dart';
+import 'package:newsapp/view/home/home.dart';
+import 'package:newsapp/view/splash/onboarding.dart';
 
 class Splash extends StatefulWidget {
   @override

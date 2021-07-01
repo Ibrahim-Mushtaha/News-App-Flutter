@@ -2,11 +2,11 @@ import 'package:logger/logger.dart';
 import 'package:newsapp/model/NavMenuItems.dart';
 import 'package:newsapp/model/Welcome.dart';
 import 'package:newsapp/other/StringConstant.dart';
-import 'package:newsapp/view/headline.dart';
-import 'package:newsapp/view/home.dart';
-import 'package:newsapp/view/onboarding.dart';
-import 'package:newsapp/view/readlater.dart';
-import 'package:newsapp/view/setting.dart';
+import 'package:newsapp/view/drawer/headline.dart';
+import 'package:newsapp/view/home/home.dart';
+import 'package:newsapp/view/splash/onboarding.dart';
+import 'package:newsapp/view/drawer/readlater.dart';
+import 'package:newsapp/view/drawer/setting.dart';
 
 class MockData{
 

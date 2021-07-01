@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/other/StringConstant.dart';
-import 'package:newsapp/util/MockData.dart';
-import 'package:newsapp/util/StorageManager.dart';
-import 'package:newsapp/util/ThemeBuilder.dart';
 import 'package:newsapp/widgets/DropDown.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Setting extends StatefulWidget {
   const Setting({Key key}) : super(key: key);

@@ -3,9 +3,9 @@ import 'package:newsapp/other/EnumConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/navigation_drawer.dart';
 import 'package:newsapp/util/MockData.dart';
-import 'package:newsapp/view/home_tabs/favorites.dart';
-import 'package:newsapp/view/home_tabs/popular.dart';
-import 'package:newsapp/view/home_tabs/whats_new.dart';
+import 'package:newsapp/view/home/home_tabs/favorites.dart';
+import 'package:newsapp/view/home/home_tabs/popular.dart';
+import 'home_tabs/whats_new.dart';
 
 
 class HomeScreen extends StatefulWidget {
