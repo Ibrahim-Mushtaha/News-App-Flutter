@@ -16,9 +16,7 @@ class MockData{
   static final logger = Logger();
   static final services = Services();
 
-  static final Map map = {
-    'data': {'apiKey': '09271e5877f64c73bc2a25faf90b52ff'},
-  };
+  static final header = {"apiKey": "cc13c66af13a457c8385fdb6021e02ed"};
 
   List<Welcome> getOnBoarding(){
     return <Welcome>[

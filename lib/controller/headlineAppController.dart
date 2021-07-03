@@ -4,24 +4,24 @@ import 'package:newsapp/model/whatsnew/News.dart';
 import 'package:newsapp/service/service.dart';
 import 'package:newsapp/util/MockData.dart';
 
-class PopularAppController extends GetxController {
+class HeadLineAppController extends GetxController {
 
-  var getPosts = News().obs;
+  var getHeadLine = News().obs;
   var postLoading = true.obs;
   Services services = Services();
 
   @override
   void onInit() {
-    callPostMethod();
+    callHeadLineMethod();
     super.onInit();
   }
 
-  void callPostMethod() async{
+  void callHeadLineMethod() async{
     try {
       postLoading.value = true;
-      var result = await MockData.services.getWhatsNew();
+      var result = await MockData.services.getHeadLine();
       if(result != null)
-        getPosts.value = result;
+        getHeadLine.value = result;
       else
         MockData.logger.e("data is null");
     } finally {

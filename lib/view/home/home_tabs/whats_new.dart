@@ -5,9 +5,6 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:newsapp/controller/whatsnewappcontroller.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/recent_update_item.dart';
-import 'package:newsapp/shared_ui/top_stories_item.dart';
-
-import '../../../model/whatsnew/News.dart';
 
 class WhatsNew extends StatefulWidget {
   const WhatsNew({Key key}) : super(key: key);
@@ -22,13 +19,16 @@ class _WhatsNewState extends State<WhatsNew> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        children: [
-          _drawHeader(context),
-          _drawTopStories(context),
-        ],
+    return Container(
+      color: Colors.grey.shade100,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            _drawHeader(context),
+            _drawTopStories(context),
+          ],
+        ),
       ),
     );
   }
