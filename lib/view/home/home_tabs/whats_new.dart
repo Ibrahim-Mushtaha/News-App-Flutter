@@ -1,9 +1,13 @@
 import 'package:bottom_sheet/bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
+import 'package:newsapp/controller/whatsnewappcontroller.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/recent_update_item.dart';
 import 'package:newsapp/shared_ui/top_stories_item.dart';
+
+import '../../../model/whatsnew/News.dart';
 
 class WhatsNew extends StatefulWidget {
   const WhatsNew({Key key}) : super(key: key);
@@ -13,9 +17,13 @@ class WhatsNew extends StatefulWidget {
 }
 
 class _WhatsNewState extends State<WhatsNew> {
+
+  var controller = Get.put(WhatsNewAppController());
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Column(
         children: [
           _drawHeader(context),
@@ -79,26 +87,32 @@ class _WhatsNewState extends State<WhatsNew> {
           Padding(
             padding: EdgeInsets.only(left: 16, top: 24, bottom: 4),
             child: Text(
-              TOPSTORIES,
-              textAlign: TextAlign.left,
-              style: _titleStyle,
-            ),
-          ),
-          TopStoriesItem("Lorem Ipsum is simply dummy text of."),
-          TopStoriesItem("Lorem Ipsum is simply dummy text of."),
-          TopStoriesItem("Lorem Ipsum is simply dummy text of."),
-          Padding(
-            padding: EdgeInsets.only(left: 16, top: 24, bottom: 4),
-            child: Text(
               "Recent Updates",
               textAlign: TextAlign.left,
               style: _titleStyle,
             ),
           ),
-          RecentUpdateItem("item 1","Lorem Ipsum is simply dummy text of.","17 min"),
-          RecentUpdateItem("item 2","Lorem Ipsum is simply dummy text of.","16 min"),
-          RecentUpdateItem("item 3","Lorem Ipsum is simply dummy text of.","18 min"),
-          RecentUpdateItem("item 4","Lorem Ipsum is simply dummy text of.","19 min"),
+          Obx((){
+            return controller.postLoading.value ?
+            Center(
+              child: CircularProgressIndicator(),
+            ) :
+            ListView.builder(
+              primary: false,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              padding: EdgeInsets.only(left: 8,right: 8,top: 4,bottom: 4),
+              itemBuilder: (context,position){
+                var item = controller.whatsNewObs.value.articles[position];
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 4),
+                  child:  RecentUpdateItem(item.title,item.description,item.author,item.urlToImage),
+                );
+              },
+              itemCount: controller.whatsNewObs.value.articles.length,
+            );
+          }
+          ),
         ],
       ),
     );

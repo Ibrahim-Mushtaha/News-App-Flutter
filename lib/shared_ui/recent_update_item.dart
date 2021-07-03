@@ -8,6 +8,7 @@ class RecentUpdateItem extends StatelessWidget {
   final String title;
   final String description;
   final String time;
+  final String image;
   final double fontSize;
   final TextAlign textAlign;
   final Color color;
@@ -20,6 +21,7 @@ class RecentUpdateItem extends StatelessWidget {
       this.title,
       this.description,
       this.time,
+      this.image,
       {
         this.fontSize,
         this.textAlign,
@@ -38,7 +40,7 @@ class RecentUpdateItem extends StatelessWidget {
         print("item is clicked");
       },
       child: Padding(
-        padding: EdgeInsets.only(left: 8, right: 8, top: 2),
+        padding: EdgeInsets.only(left: 4, right: 4, top: 2),
         child: Card(
           elevation: 4,
           child: Padding(
@@ -52,33 +54,25 @@ class RecentUpdateItem extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       height: 200,
-                      child: Image(
-                        image: ExactAssetImage(image1),
-                        fit: BoxFit.cover,
-                      ),
+                      child: Image.network( image ?? "",fit: BoxFit.cover,),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 94,
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.deepOrangeAccent,
-                          borderRadius: BorderRadius.circular(4),
+                      padding: const EdgeInsets.only(
+                          right: 8, bottom: 8, left: 12, top: 16),
+                      child: Text(
+                        title ?? 'استبدل هذا النص',
+                        maxLines: 2,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black54,
                         ),
-                        child: Center(
-                          child: Text(
-                            title ?? 'استبدل هذا النص',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w300),
-                          ),
-                        ),
+                        textAlign: TextAlign.start,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          right: 8, bottom: 8, left: 12, top: 8),
+                          right: 8, bottom: 8, left: 12, top: 4),
                       child: Text(
                         description ?? 'استبدل هذا النص',
                         maxLines: 2,
@@ -93,18 +87,22 @@ class RecentUpdateItem extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           right: 8, bottom: 8, left: 8, top: 2),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            child: Icon(Icons.timer),
-                            margin: EdgeInsets.only(right: 4),
-                          ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 6),
+                            padding: const EdgeInsets.only(top: 6,right: 8),
                             child: Text(
                               time ?? 'استبدل هذا النص',
                               textAlign: TextAlign.center,
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 6,left: 8,right: 8),
+                            child: Text(
+                              '15',
+                              textAlign: TextAlign.center,
+                            ),
+                          )
                         ],
                       ),
                     ),

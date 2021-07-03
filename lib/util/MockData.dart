@@ -2,6 +2,7 @@ import 'package:logger/logger.dart';
 import 'package:newsapp/model/NavMenuItems.dart';
 import 'package:newsapp/model/Welcome.dart';
 import 'package:newsapp/other/StringConstant.dart';
+import 'package:newsapp/service/service.dart';
 import 'package:newsapp/view/drawer/headline.dart';
 import 'package:newsapp/view/home/home.dart';
 import 'package:newsapp/view/splash/onboarding.dart';
@@ -13,6 +14,11 @@ class MockData{
   MockData._();
   static final MockData mockData = MockData._();
   static final logger = Logger();
+  static final services = Services();
+
+  static final Map map = {
+    'data': {'apiKey': '09271e5877f64c73bc2a25faf90b52ff'},
+  };
 
   List<Welcome> getOnBoarding(){
     return <Welcome>[
