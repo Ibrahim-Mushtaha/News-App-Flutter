@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newsapp/controller/headlineAppController.dart';
+import 'package:newsapp/other/ColorsConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/navigation_drawer.dart';
 
@@ -133,7 +134,7 @@ class _HeadLineState extends State<HeadLine> {
         SizedBox(height: 8,),
         Text("Lorem Ipsum is simply dummy text of.",
           style: TextStyle(
-            color: Colors.deepOrangeAccent,
+            color: AppColors.deepBlue,
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/util/StorageManager.dart';
-import 'package:newsapp/value/animate_do.dart';
+import 'package:newsapp/other/animate_do.dart';
 import 'package:newsapp/view/main/home_tabs/home.dart';
 import 'package:newsapp/view/splash/onboarding.dart';
 
@@ -44,7 +44,7 @@ class _SplashState extends State<Splash> {
           animate: true,
           child: Center(
             child: Image.asset(
-              'assets/images/ic_news_logo.png',
+              logo,
               height: 124,
               width: 124,
               fit:  BoxFit.fill,

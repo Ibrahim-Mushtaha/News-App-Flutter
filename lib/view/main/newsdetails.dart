@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/model/whatsnew/News.dart';
+import 'package:newsapp/other/ColorsConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
 
 class NewsDetails extends StatefulWidget {
@@ -97,7 +98,7 @@ class _NewsDetails extends State<NewsDetails> {
             },
                 child: Text(_article.author,
                   style: TextStyle(
-                    color: Colors.deepOrangeAccent,
+                    color: AppColors.deepBlue,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
@@ -113,7 +114,7 @@ class _NewsDetails extends State<NewsDetails> {
               child: Text(_article.publishedAt.toString(),
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: Colors.deepOrangeAccent,
+                  color: AppColors.deepBlue,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),

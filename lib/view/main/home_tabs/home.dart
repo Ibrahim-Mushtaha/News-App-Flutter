@@ -3,6 +3,7 @@ import 'package:newsapp/other/EnumConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/navigation_drawer.dart';
 import 'package:newsapp/util/MockData.dart';
+import 'package:newsapp/view/main/about.dart';
 import 'package:newsapp/view/main/home_tabs/popular.dart';
 import 'whats_new.dart';
 
@@ -68,11 +69,20 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         ),
         PopupMenuItem(
             value: PopOutMenu.HELP,
-            child: Text('Help')
+            child: Text('Share')
         ),
       ];
     }, onSelected: (PopOutMenu menu ){
         setState(() {
+          if(menu == PopOutMenu.ABOUT){
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return AboutApp();
+            }
+            )
+            );
+          }else{
+
+          }
           _selection = menu;
           MockData.logger.v("selection is $menu");
         });

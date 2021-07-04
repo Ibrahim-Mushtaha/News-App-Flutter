@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:newsapp/controller/whatsnewappcontroller.dart';
+import 'package:newsapp/other/ColorsConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/recent_update_item.dart';
 import 'package:newsapp/view/main/newsdetails.dart';
@@ -171,7 +172,7 @@ class _WhatsNewState extends State<WhatsNew> {
                             Shadow(
                               offset: Offset(1.0, 1.0),
                               blurRadius: 40.0,
-                              color: Colors.black45,
+                              color: AppColors.deepBlack,
                             ),
                           ],
                         ),
@@ -201,7 +202,7 @@ class _WhatsNewState extends State<WhatsNew> {
                           borderRadius: BorderRadius.circular(50),
                           child: Center(
                               child: Container(
-                            color: Colors.deepOrangeAccent,
+                            color: AppColors.deepBlue,
                             child: IconButton(
                               icon: Icon(Icons.close,
                                 color: Colors.white,
@@ -228,7 +229,7 @@ class _WhatsNewState extends State<WhatsNew> {
                         child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(50)),
-                          color: Colors.deepOrangeAccent,
+                          color: AppColors.deepBlue,
                         ),
                         ),
                       ),
@@ -247,7 +248,7 @@ class _WhatsNewState extends State<WhatsNew> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
-                            color: Colors.black54,
+                            color: AppColors.deepBlack,
                             wordSpacing: 2,
                           ),
                           maxLines: 8,
