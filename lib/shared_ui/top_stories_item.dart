@@ -5,7 +5,9 @@ import 'package:newsapp/util/MockData.dart';
 
 class TopStoriesItem extends StatelessWidget {
 
-  final String text;
+  final String title;
+  final String description;
+  final String image;
   final double fontSize;
   final TextAlign textAlign;
   final Color color;
@@ -14,7 +16,10 @@ class TopStoriesItem extends StatelessWidget {
   final int maxLines;
   final String fontFamily;
 
-  TopStoriesItem(this.text,
+  TopStoriesItem(
+      this.title,
+      this.description,
+      this.image,
       {
         this.fontSize,
         this.textAlign,
@@ -30,7 +35,7 @@ class TopStoriesItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         MotionToast.success(
-          title:   text ?? 'استبدل هذا النص',
+          title:   title ?? 'استبدل هذا النص',
           titleStyle:
           TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
           description: "Example of success motion toast",
@@ -40,80 +45,79 @@ class TopStoriesItem extends StatelessWidget {
         print("item Stories is clicked");
       },
       child: Padding(
-        padding: EdgeInsets.only(left: 8, right: 8, top: 2),
-        child: Card(
+        padding: EdgeInsets.all(4),
+        child:  Card(
           elevation: 4,
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 100,
-                      height: 100,
-                      child: Image(
-                        image: ExactAssetImage(image1),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 16,
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8, bottom: 8),
-                            child: Text(
-                              text ?? 'استبدل هذا النص',
-                              maxLines: 2,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.start,
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Lorem Ipsum",
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 16),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        child: Icon(Icons.timer),
-                                        margin: EdgeInsets.only(right: 4),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 6),
-                                        child: Text(
-                                          "16 min",
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          child: Column(
+            children: [
+              _drawBody(title,description,image),
+            ],
           ),
         ),
       ),
     );
   }
+
+
+  Widget _drawBody(String title, String description,String image) {
+    return InkWell(
+      onTap: () {
+        print("item Stories is clicked");
+      },
+      child: Padding(
+        padding: EdgeInsets.only(left: 4, right: 4, top: 2,bottom: 8),
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                      width: 108,
+                      height: 108,
+                      child: Image.network( image ?? "",fit: BoxFit.cover,)
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 4, bottom: 8),
+                          child: Text(
+                            title ?? 'Lorem Ipsum',
+                            maxLines: 2,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 4),
+                          child: Text(
+                            description ?? "Lorem Ipsum",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                            ),
+                            textAlign: TextAlign.start,
+                            maxLines: 2,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
 }

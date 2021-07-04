@@ -3,9 +3,9 @@ import 'package:newsapp/other/EnumConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/navigation_drawer.dart';
 import 'package:newsapp/util/MockData.dart';
-import 'package:newsapp/view/home/home_tabs/favorites.dart';
-import 'package:newsapp/view/home/home_tabs/popular.dart';
-import 'home_tabs/whats_new.dart';
+import 'package:newsapp/view/main/home_tabs/favorites.dart';
+import 'package:newsapp/view/main/home_tabs/popular.dart';
+import 'whats_new.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(initialIndex: 0 ,length: 3, vsync: this);
+    _tabController = TabController(initialIndex: 0 ,length: 2, vsync: this);
   }
 
   @override
@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           tabs: [
             Tab(text: WHATSNEW,),
             Tab(text: POPULAR,),
-            Tab(text: FAVORITE,),
+           // Tab(text: FAVORITE,),
           ],
           controller: _tabController,
         ),
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           children: [
             WhatsNew(),
             Popular(),
-            Favorites(),
+            //Favorites(),
           ],
           controller: _tabController,
         ),

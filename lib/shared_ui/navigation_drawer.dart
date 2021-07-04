@@ -23,25 +23,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               flex: 1,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4)
-                ),
+                height: 50,
                 child: DrawerHeader(
                   padding: EdgeInsets.all(0),
-                  child: Card(
-                    margin: EdgeInsets.all(8),
-                    elevation: 4,
-                    child: Container(
-                      decoration: BoxDecoration(
-            image: DecorationImage(
-                image: ExactAssetImage(image3),
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode( Colors.black45.withOpacity(0.4), BlendMode.multiply),
-            ),
-          ),
-                    ),
-                  ),
+                  child: Image.network( "https://media.giphy.com/media/w85OYSOzXQaiVzZswl/giphy.gif",fit: BoxFit.cover,),
                 ),
               ),
             ),

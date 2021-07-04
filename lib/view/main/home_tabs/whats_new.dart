@@ -101,7 +101,7 @@ class _WhatsNewState extends State<WhatsNew> {
               primary: false,
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              padding: EdgeInsets.only(left: 8,right: 8,top: 4,bottom: 4),
+              padding: EdgeInsets.only(left: 4,right: 4,top: 4,bottom: 4),
               itemBuilder: (context,position){
                 var item = controller.whatsNewObs.value.articles[position];
                 return Padding(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/util/StorageManager.dart';
 import 'package:newsapp/value/animate_do.dart';
-import 'package:newsapp/view/home/home.dart';
+import 'package:newsapp/view/main/home_tabs/home.dart';
 import 'package:newsapp/view/splash/onboarding.dart';
 
 class Splash extends StatefulWidget {

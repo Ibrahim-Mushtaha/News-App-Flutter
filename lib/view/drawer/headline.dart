@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:newsapp/controller/headlineAppController.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/navigation_drawer.dart';
 
@@ -11,6 +13,9 @@ class HeadLine extends StatefulWidget {
 }
 
 class _HeadLineState extends State<HeadLine> {
+
+  var controller = Get.put(HeadLineAppController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,80 +23,71 @@ class _HeadLineState extends State<HeadLine> {
         title: Text(HEAD_LINE),
       ),
       drawer: NavigationDrawer(),
-      body: ListView.builder(
-          padding: EdgeInsets.only(left: 8,right: 8,top: 4,bottom: 4),
+      body: Obx((){
+        return controller.postLoading.value ?
+        Center(
+          child: CircularProgressIndicator(),
+        ) :
+        ListView.builder(
+          primary: false,
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          padding: EdgeInsets.only(left: 2,right: 2,top: 2,bottom: 2),
           itemBuilder: (context,position){
+            var item = controller.getHeadLine.value;
             return Padding(
-                padding: EdgeInsets.only(bottom: 4),
-                   child: Card(
-                     elevation: 2.6,
-                     child: Column(
-                       crossAxisAlignment: CrossAxisAlignment.start,
-                       children: [
-                         _drawHeader(),
-                         _drawTitle(),
-                         _drawBody(),
-                         _drawFooter(),
-                       ],
-                     ),
-                   ),
+              padding: EdgeInsets.all(4),
+              child:  Card(
+                elevation: 4,
+                child: Column(
+                  children: [
+                    _drawHeader(item.articles[position].author,item.articles[position].publishedAt.toString()),
+                    _drawBody(item.articles[position].title,item.articles[position].description,item.articles[position].urlToImage),
+                  ],
+                ),
+              ),
             );
           },
-        itemCount: 12,
+          itemCount: controller.getHeadLine.value.articles.length,
+        );
+      }
       ),
     );
   }
 
- Widget _drawHeader() {
+ Widget _drawHeader(String name,String publishAt) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
       Row(
         children: [
           Padding(
-            padding: EdgeInsets.all(16),
-            child: Container(
-              margin: EdgeInsets.only(left: 4),
-              width: 56,
-              height: 56,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x54000000),
-                    spreadRadius:0.4,
-                    blurRadius: 24,
+            padding: const EdgeInsets.only(top: 16,left: 16,right: 16,bottom: 8),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(name ?? "Ibrahim Ali",
+                  style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
                   ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image(image: ExactAssetImage(image1),fit: BoxFit.cover,),
-              ),
+                ),
+                SizedBox(height: 8,width: 8,),
+                Text(publishAt ?? "Fri, 12 may 2021",
+                  style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
             ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Ibrahim Ali",
-                style: TextStyle(
-                  color: Colors.grey.shade700,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(height: 8,width: 8,),
-              Text("Fri, 12 may 2021",
-                style: TextStyle(
-                  color: Colors.grey.shade700,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
           ),
         ],
       ),
+        /* todo add icon save in right
         Padding(
           padding: const EdgeInsets.only(left: 16,right: 16),
           child: Row(
@@ -116,7 +112,7 @@ class _HeadLineState extends State<HeadLine> {
               ),
             ],
           ),
-        ),
+        ),*/
       ],
     );
  }
@@ -148,17 +144,62 @@ class _HeadLineState extends State<HeadLine> {
   );
  }
 
- Widget _drawBody() {
-   return Container(
-     width: MediaQuery.of(context).size.width,
-     height: MediaQuery.of(context).size.height * 0.25,
-     decoration: BoxDecoration(
-       image:
-       DecorationImage(image: ExactAssetImage(image2), fit: BoxFit.cover),
-     ),
-     child: Center(
-       child: Container(
-         color: Colors.black45.withOpacity(0.5),
+ Widget _drawBody(String title, String description,String image) {
+   return InkWell(
+     onTap: () {
+       print("item Stories is clicked");
+     },
+     child: Padding(
+       padding: EdgeInsets.only(left: 4, right: 4, top: 2,bottom: 8),
+       child: Padding(
+         padding: const EdgeInsets.all(4),
+         child: Column(
+           children: [
+             Row(
+               children: [
+                 SizedBox(
+                   width: 108,
+                   height: 108,
+                   child: Image.network( image ?? "",fit: BoxFit.cover,)
+                 ),
+                 SizedBox(
+                   width: 16,
+                 ),
+                 Expanded(
+                   child: Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Padding(
+                         padding: const EdgeInsets.only(right: 4, bottom: 8),
+                         child: Text(
+                            title ?? 'Lorem Ipsum',
+                           maxLines: 2,
+                           style: TextStyle(
+                             fontSize: 16,
+                             fontWeight: FontWeight.w600,
+                           ),
+                           textAlign: TextAlign.start,
+                         ),
+                       ),
+                       Padding(
+                         padding: const EdgeInsets.only(right: 4),
+                         child: Text(
+                         description ?? "Lorem Ipsum",
+                           style: TextStyle(
+                             fontSize: 14,
+                             fontWeight: FontWeight.w300,
+                           ),
+                         textAlign: TextAlign.start,
+                           maxLines: 2,
+                         ),
+                       ),
+                     ],
+                   ),
+                 ),
+               ],
+             ),
+           ],
+         ),
        ),
      ),
    );

@@ -4,9 +4,8 @@ import 'package:newsapp/model/Welcome.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/service/service.dart';
 import 'package:newsapp/view/drawer/headline.dart';
-import 'package:newsapp/view/home/home.dart';
+import 'package:newsapp/view/main/home_tabs/home.dart';
 import 'package:newsapp/view/splash/onboarding.dart';
-import 'package:newsapp/view/drawer/readlater.dart';
 import 'package:newsapp/view/drawer/setting.dart';
 
 class MockData{
@@ -32,7 +31,6 @@ class MockData{
   List<NavMenuItems> navMenu = [
     NavMenuItems(EXPLORE, () => HomeScreen() ),
     NavMenuItems(HEAD_LINE, () => HeadLine() ),
-    //NavMenuItems(READ_LATER, () => ReadLater() ),
     NavMenuItems(SETTINGS, () => Setting() ),
     NavMenuItems(LOGOUT, () => OnBoarding() ),
   ];
