@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newsapp/controller/popularAppController.dart';
+import 'package:newsapp/other/animate_do.dart';
 import 'package:newsapp/shared_ui/top_stories_item.dart';
 
 
@@ -30,10 +31,14 @@ class _PopularState extends State<Popular> {
           padding: EdgeInsets.only(left: 2,right: 2,top: 2,bottom: 2),
           itemBuilder: (context,position){
             var item = controller.getPopular.value;
-            return Column(
-              children: [
-                TopStoriesItem(item.articles[position].title,item.articles[position].description,item.articles[position].urlToImage)
-              ],
+            return FadeInDown(
+              duration: Duration(milliseconds: 1500),
+              animate: true,
+              child:  Column(
+                children: [
+                  TopStoriesItem(item.articles[position].title,item.articles[position].description,item.articles[position].urlToImage)
+                ],
+              ),
             );
           },
           itemCount: controller.getPopular.value.articles.length,

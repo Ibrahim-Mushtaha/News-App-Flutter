@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:newsapp/controller/headlineAppController.dart';
 import 'package:newsapp/other/ColorsConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
+import 'package:newsapp/other/animate_do.dart';
 import 'package:newsapp/shared_ui/navigation_drawer.dart';
 
 class HeadLine extends StatefulWidget {
@@ -36,15 +37,19 @@ class _HeadLineState extends State<HeadLine> {
           padding: EdgeInsets.only(left: 2,right: 2,top: 2,bottom: 2),
           itemBuilder: (context,position){
             var item = controller.getHeadLine.value;
-            return Padding(
-              padding: EdgeInsets.all(4),
-              child:  Card(
-                elevation: 4,
-                child: Column(
-                  children: [
-                    _drawHeader(item.articles[position].author,item.articles[position].publishedAt.toString()),
-                    _drawBody(item.articles[position].title,item.articles[position].description,item.articles[position].urlToImage),
-                  ],
+            return FadeInDown(
+              duration: Duration(milliseconds: 1500),
+              animate: true,
+              child:  Padding(
+                padding: EdgeInsets.all(4),
+                child:  Card(
+                  elevation: 4,
+                  child: Column(
+                    children: [
+                      _drawHeader(item.articles[position].author,item.articles[position].publishedAt.toString()),
+                      _drawBody(item.articles[position].title,item.articles[position].description,item.articles[position].urlToImage),
+                    ],
+                  ),
                 ),
               ),
             );

@@ -1,10 +1,10 @@
 import 'package:bottom_sheet/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motion_toast/motion_toast.dart';
 import 'package:newsapp/controller/whatsnewappcontroller.dart';
 import 'package:newsapp/other/ColorsConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
+import 'package:newsapp/other/animate_do.dart';
 import 'package:newsapp/shared_ui/recent_update_item.dart';
 import 'package:newsapp/view/main/newsdetails.dart';
 
@@ -113,9 +113,13 @@ class _WhatsNewState extends State<WhatsNew> {
                 padding: EdgeInsets.only(left: 4,right: 4,top: 4,bottom: 4),
                 itemBuilder: (context,position){
                   var item = controller.whatsNewObs.value.articles[position];
-                  return Padding(
-                    padding: EdgeInsets.only(bottom: 4),
-                    child:  RecentUpdateItem(item),
+                  return FadeInDown(
+                    duration: Duration(milliseconds: 1500),
+                    animate: true,
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 4),
+                      child:  RecentUpdateItem(item),
+                    ),
                   );
                 },
                 itemCount: controller.whatsNewObs.value.articles.length,
