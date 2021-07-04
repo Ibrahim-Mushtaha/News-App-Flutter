@@ -1,9 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:newsapp/other/ColorsConstant.dart';
 import 'package:newsapp/util/StorageManager.dart';
-import 'package:newsapp/util/StorageManager.dart';
-
 import 'StorageManager.dart';
 
 class AppTheme {
