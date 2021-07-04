@@ -24,11 +24,9 @@ class _Setting extends State<Setting> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 16,top: 16
-            ),
+            padding: const EdgeInsets.only(left: 16,top: 24,right: 16),
             child: Text("Night mode",
               style: TextStyle(
-                color: Colors.grey.shade700,
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
               ),
@@ -36,21 +34,6 @@ class _Setting extends State<Setting> {
           ),
           Expanded(
             flex: 2,
-            child:
-            DropDown(),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16,top: 4),
-            child: Text("Notification",
-              style: TextStyle(
-                color: Colors.grey.shade700,
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 14,
             child:
             DropDown(),
           ),

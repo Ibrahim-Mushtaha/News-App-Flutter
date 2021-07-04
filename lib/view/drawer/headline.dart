@@ -205,53 +205,5 @@ class _HeadLineState extends State<HeadLine> {
    );
  }
 
- Widget _drawFooter() {
-   return Row(
-     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-     children: [
-       Row(
-         children: [
-           FlatButton(onPressed: (){
-
-           },
-               child: Text("16 connects",
-                 style: TextStyle(
-                   color: Colors.deepOrangeAccent,
-                   fontSize: 14,
-                   fontWeight: FontWeight.w500,
-                 ),
-               )
-           )
-         ],
-       ),
-       Row(
-         children: [
-           FlatButton(onPressed: (){
-
-           },
-               child: Text("share",
-                 style: TextStyle(
-                   color: Colors.deepOrangeAccent,
-                   fontSize: 14,
-                   fontWeight: FontWeight.w500,
-                 ),
-               )
-           ),
-           FlatButton(onPressed: (){
-
-           },
-               child: Text("Open",
-                 style: TextStyle(
-                   color: Colors.deepOrangeAccent,
-                   fontSize: 14,
-                   fontWeight: FontWeight.w500,
-                 ),
-               )
-           ),
-         ],
-       ),
-     ],
-   );
- }
 
 }

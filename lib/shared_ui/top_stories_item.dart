@@ -94,6 +94,7 @@ class TopStoriesItem extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                             ),
                             textAlign: TextAlign.start,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         Padding(
@@ -106,6 +107,7 @@ class TopStoriesItem extends StatelessWidget {
                             ),
                             textAlign: TextAlign.start,
                             maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],

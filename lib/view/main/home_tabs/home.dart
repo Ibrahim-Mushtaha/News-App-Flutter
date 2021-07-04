@@ -3,7 +3,6 @@ import 'package:newsapp/other/EnumConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/navigation_drawer.dart';
 import 'package:newsapp/util/MockData.dart';
-import 'package:newsapp/view/main/home_tabs/favorites.dart';
 import 'package:newsapp/view/main/home_tabs/popular.dart';
 import 'whats_new.dart';
 
@@ -33,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         title: Text(EXPLORE),
         centerTitle: false,
         actions: [
-          IconButton(icon: Icon(Icons.search), onPressed: (){}),
           _popOutMenu(context),
         ],
         bottom: TabBar(
@@ -42,7 +40,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           tabs: [
             Tab(text: WHATSNEW,),
             Tab(text: POPULAR,),
-           // Tab(text: FAVORITE,),
           ],
           controller: _tabController,
         ),
@@ -53,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           children: [
             WhatsNew(),
             Popular(),
-            //Favorites(),
           ],
           controller: _tabController,
         ),

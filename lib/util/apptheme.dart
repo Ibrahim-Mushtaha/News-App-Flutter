@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:newsapp/other/ColorsConstant.dart';
 import 'package:newsapp/util/StorageManager.dart';
 import 'package:newsapp/util/StorageManager.dart';
 
@@ -9,21 +10,21 @@ class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
     primarySwatch: Colors.grey,
-    primaryColor: Colors.black,
+    primaryColor: AppColors.deepBlack,
     brightness: Brightness.dark,
-    backgroundColor: const Color(0xFF212121),
+    backgroundColor: AppColors.softBlack,
     accentColor: Colors.white,
-    accentIconTheme: IconThemeData(color: Colors.black),
+    accentIconTheme: IconThemeData(color: AppColors.softBlack),
     dividerColor: Colors.black12,
     fontFamily: "Tajawal-Regular",
   );
 
   static ThemeData lightTheme = ThemeData(
     primarySwatch: Colors.grey,
-    primaryColor: Colors.deepOrangeAccent,
+    primaryColor: AppColors.deepBlue,
     brightness: Brightness.light,
     backgroundColor: const Color(0xFFE5E5E5),
-    accentColor: Colors.black,
+    accentColor: AppColors.deepBlack,
     accentIconTheme: IconThemeData(color: Colors.white),
     dividerColor: Colors.white54,
     fontFamily: "Tajawal-Regular",

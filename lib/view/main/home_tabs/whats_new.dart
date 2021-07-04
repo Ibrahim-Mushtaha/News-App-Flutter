@@ -5,6 +5,7 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:newsapp/controller/whatsnewappcontroller.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/shared_ui/recent_update_item.dart';
+import 'package:newsapp/view/main/newsdetails.dart';
 
 class WhatsNew extends StatefulWidget {
   const WhatsNew({Key key}) : super(key: key);
@@ -19,9 +20,8 @@ class _WhatsNewState extends State<WhatsNew> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey.shade100,
-      child: SingleChildScrollView(
+    return Scaffold(
+      body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
@@ -74,46 +74,55 @@ class _WhatsNewState extends State<WhatsNew> {
   }
 
   Widget _drawTopStories(BuildContext context) {
-    TextStyle _titleStyle = TextStyle(
-        color: Colors.black54, fontWeight: FontWeight.w600, fontSize: 16);
 
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      color: Colors.grey.shade100,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 16, top: 24, bottom: 4),
-            child: Text(
-              "Recent Updates",
-              textAlign: TextAlign.left,
-              style: _titleStyle,
+    TextStyle _titleStyle = TextStyle(
+        fontWeight: FontWeight.w600, fontSize: 16);
+
+    return InkWell(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return NewsDetails();
+        }
+        )
+        );
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 16, top: 24, bottom: 4),
+              child: Text(
+                "Recent Updates",
+                textAlign: TextAlign.left,
+                style: _titleStyle,
+              ),
             ),
-          ),
-          Obx((){
-            return controller.postLoading.value ?
-            Center(
-              child: CircularProgressIndicator(),
-            ) :
-            ListView.builder(
-              primary: false,
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              padding: EdgeInsets.only(left: 4,right: 4,top: 4,bottom: 4),
-              itemBuilder: (context,position){
-                var item = controller.whatsNewObs.value.articles[position];
-                return Padding(
-                  padding: EdgeInsets.only(bottom: 4),
-                  child:  RecentUpdateItem(item.title,item.description,item.author,item.urlToImage),
-                );
-              },
-              itemCount: controller.whatsNewObs.value.articles.length,
-            );
-          }
-          ),
-        ],
+            Obx((){
+              return controller.postLoading.value ?
+              Center(
+                child: CircularProgressIndicator(),
+              ) :
+              ListView.builder(
+                primary: false,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                padding: EdgeInsets.only(left: 4,right: 4,top: 4,bottom: 4),
+                itemBuilder: (context,position){
+                  var item = controller.whatsNewObs.value.articles[position];
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 4),
+                    child:  RecentUpdateItem(item),
+                  );
+                },
+                itemCount: controller.whatsNewObs.value.articles.length,
+              );
+            }
+            ),
+          ],
+        ),
       ),
     );
   }

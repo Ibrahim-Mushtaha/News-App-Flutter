@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
+import 'package:newsapp/model/whatsnew/News.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/util/MockData.dart';
+import 'package:newsapp/view/main/newsdetails.dart';
 
 class RecentUpdateItem extends StatelessWidget {
 
-  final String title;
-  final String description;
-  final String time;
-  final String image;
+  final Article article;
   final double fontSize;
   final TextAlign textAlign;
   final Color color;
@@ -18,10 +17,7 @@ class RecentUpdateItem extends StatelessWidget {
   final String fontFamily;
 
   RecentUpdateItem(
-      this.title,
-      this.description,
-      this.time,
-      this.image,
+      this.article,
       {
         this.fontSize,
         this.textAlign,
@@ -37,6 +33,11 @@ class RecentUpdateItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         //_showSheet();
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return NewsDetails(article: article,);
+        }
+        )
+        );
         print("item is clicked");
       },
       child: Padding(
@@ -54,33 +55,34 @@ class RecentUpdateItem extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       height: 200,
-                      child: Image.network( image ?? "",fit: BoxFit.cover,),
+                      child: Image.network( article.urlToImage ?? "",fit: BoxFit.cover,),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
                           right: 8, bottom: 8, left: 12, top: 16),
                       child: Text(
-                        title ?? 'استبدل هذا النص',
+                        article.title ?? 'استبدل هذا النص',
                         maxLines: 2,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
-                          color: Colors.black54,
                         ),
                         textAlign: TextAlign.start,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
                           right: 8, bottom: 8, left: 12, top: 4),
                       child: Text(
-                        description ?? 'استبدل هذا النص',
+                        article.description ?? 'استبدل هذا النص',
                         maxLines: 2,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
                         textAlign: TextAlign.start,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Padding(
@@ -92,7 +94,7 @@ class RecentUpdateItem extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 6,right: 8),
                             child: Text(
-                              time ?? 'استبدل هذا النص',
+                              article.publishedAt.toString() ?? 'استبدل هذا النص',
                               textAlign: TextAlign.center,
                             ),
                           ),
