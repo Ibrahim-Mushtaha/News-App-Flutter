@@ -21,7 +21,6 @@ class _NewsDetails extends State<NewsDetails> {
   Widget build(BuildContext context) {
     _article = widget.article;
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         title: Text(READ_LATER),
       ),

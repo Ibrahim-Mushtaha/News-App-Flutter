@@ -30,13 +30,13 @@ class _PopularState extends State<Popular> {
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 2,right: 2,top: 2,bottom: 2),
           itemBuilder: (context,position){
-            var item = controller.getPopular.value;
+            var item = controller.getPopular.value.articles[position];
             return FadeInDown(
               duration: Duration(milliseconds: 1500),
               animate: true,
               child:  Column(
                 children: [
-                  TopStoriesItem(item.articles[position].title,item.articles[position].description,item.articles[position].urlToImage)
+                  TopStoriesItem(item)
                 ],
               ),
             );

@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newsapp/controller/headlineAppController.dart';
+import 'package:newsapp/model/whatsnew/News.dart';
 import 'package:newsapp/other/ColorsConstant.dart';
 import 'package:newsapp/other/StringConstant.dart';
 import 'package:newsapp/other/animate_do.dart';
 import 'package:newsapp/shared_ui/navigation_drawer.dart';
+import 'package:newsapp/view/main/newsdetails.dart';
 
 class HeadLine extends StatefulWidget {
   const HeadLine({Key key}) : super(key: key);
@@ -17,6 +19,8 @@ class HeadLine extends StatefulWidget {
 class _HeadLineState extends State<HeadLine> {
 
   var controller = Get.put(HeadLineAppController());
+
+  Article _article;
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +41,28 @@ class _HeadLineState extends State<HeadLine> {
           padding: EdgeInsets.only(left: 2,right: 2,top: 2,bottom: 2),
           itemBuilder: (context,position){
             var item = controller.getHeadLine.value;
+            _article = controller.getHeadLine.value.articles[position];
             return FadeInDown(
               duration: Duration(milliseconds: 1500),
               animate: true,
               child:  Padding(
                 padding: EdgeInsets.all(4),
-                child:  Card(
-                  elevation: 4,
-                  child: Column(
-                    children: [
-                      _drawHeader(item.articles[position].author,item.articles[position].publishedAt.toString()),
-                      _drawBody(item.articles[position].title,item.articles[position].description,item.articles[position].urlToImage),
-                    ],
+                child:  GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return NewsDetails(article: _article,);
+                    }
+                    )
+                    );
+                  },
+                  child: Card(
+                    elevation: 4,
+                    child: Column(
+                      children: [
+                        _drawHeader(item.articles[position].author,item.articles[position].publishedAt.toString()),
+                        _drawBody(item.articles[position].title,item.articles[position].description,item.articles[position].urlToImage),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -75,7 +89,6 @@ class _HeadLineState extends State<HeadLine> {
               children: [
                 Text(name ?? "Ibrahim Ali",
                   style: TextStyle(
-                    color: Colors.grey.shade700,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
@@ -83,7 +96,6 @@ class _HeadLineState extends State<HeadLine> {
                 SizedBox(height: 8,width: 8,),
                 Text(publishAt ?? "Fri, 12 may 2021",
                   style: TextStyle(
-                    color: Colors.grey.shade700,
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
