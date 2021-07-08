@@ -16,13 +16,12 @@ class _NewsDetails extends State<NewsDetails> {
 
   Article _article;
 
-
   @override
   Widget build(BuildContext context) {
     _article = widget.article;
     return Scaffold(
       appBar: AppBar(
-        title: Text(READ_LATER),
+        title: Text(DETAILS),
       ),
       body: Container(
         child: SingleChildScrollView(

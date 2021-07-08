@@ -6,6 +6,7 @@ const String logo = "assets/images/ic_news_logo.png";
 const String EXPLORE = "Explore";
 const String HEAD_LINE = "HeadLine News";
 const String READ_LATER = "Read Later";
+const String DETAILS = "Details";
 const String SETTINGS = "Settings";
 const String LOGOUT = "Logout";
 const String WHATSNEW = "WHAT'S NEW";
